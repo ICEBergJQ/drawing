@@ -1,5 +1,5 @@
 mod geometrical_shapes;
-
+extern crate raster;
 use geometrical_shapes as gs;
 use gs::{Displayable, Drawable};
 use raster::{Color, Image};
