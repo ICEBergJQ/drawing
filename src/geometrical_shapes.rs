@@ -126,19 +126,19 @@ impl Circle {
     pub fn random(width: i32, height: i32) -> Self {
         let mut rng = rand::thread_rng();
         let center = Point::new(rng.gen_range(0..width), rng.gen_range(0..height));
-        let radius = rng.gen_range(10..100); // Random radius between 10 and 100
+        let radius = rng.gen_range(10..200);
         Circle::new(center, radius)
     }
 }
 impl Drawable for Circle {
     fn draw(&self, image: &mut Image) {
-        let steps: i32 = 360;
+        let mut steps: i32 = 360;
+        steps = steps.pow(2);
         let color = Circle::random_color();
-        for i in 0..360 {
+        for i in 0..steps {
             let theta = ((i as f64) * 2.0 * std::f64::consts::PI) / (steps as f64);
             let x = (self.center.x as f64) + (self.radius as f64) * theta.cos();
             let y = (self.center.y as f64) + (self.radius as f64) * theta.sin();
-            // let color = Cir
             let _ = image.set_pixel(x.round() as i32, y.round() as i32, color.clone());
         }
     }
