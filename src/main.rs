@@ -1,6 +1,6 @@
 mod geometrical_shapes;
 extern crate raster;
-use geometrical_shapes::geometrical_shapes as gs;
+use geometrical_shapes as gs;
 use gs::{Displayable, Drawable};
 use raster::{Color, Image};
 
@@ -21,9 +21,9 @@ fn main() {
     );
     triangle.draw(&mut image);
 
-    // for _ in 1..50 {
-    //     gs::Circle::random(image.width, image.height).draw(&mut image);
-    // }
+    for _ in 1..50 {
+        gs::Circle::random(image.width, image.height).draw(&mut image);
+    }
 
     raster::save(&image, "image.png").unwrap();
 }
