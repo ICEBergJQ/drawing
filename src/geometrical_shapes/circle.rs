@@ -39,13 +39,13 @@ impl Circle {
 impl Drawable for Circle {
     fn draw(&self, image: &mut Image) {
         let steps: i32 = 180*  self.radius;
-        let color =  Circle::random_color();
+        let color =  self.color();
         for i in 0..steps {
             let theta: f64 = ((i as f64) * std::f64::consts::PI) / (steps as f64);
             let x = (self.center.x as f64) + (self.radius as f64) * theta.cos();
             let y = (self.center.y as f64) + (self.radius as f64) * theta.sin();
             let minus_y  = (self.center.y as f64) - (self.radius as f64) * theta.sin();
-            Displayable::display(image, x.round() as i32, y.round() as i32, color.clone());
+            Displayable::display(image, x.round()  as i32, y.round() as i32, color.clone());
             Displayable::display(image, x.round() as i32, minus_y.round() as i32, color.clone());
 
         }
