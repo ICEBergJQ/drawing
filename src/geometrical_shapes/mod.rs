@@ -7,7 +7,7 @@ pub use circle::Circle;
 pub use line::Line;
 pub use point::Point;
 pub use raster::{Color, Image};
-// pub use rectangle::Rectangle;
+pub use rectangle::Rectangle;
 pub use triangle::Triangle;
 
 pub trait Drawable {

@@ -38,10 +38,10 @@ impl Triangle {
 }
 
 impl Drawable for Triangle {
-    fn draw(&self, _image: &mut Image) {
-        draw_ln(self.p1.clone(), self.p2.clone(), _image, self.color.clone());
-        draw_ln(self.p2.clone(), self.p3.clone(), _image, self.color.clone());
-        draw_ln(self.p3.clone(), self.p1.clone(), _image, self.color.clone());
+    fn draw(&self, image: &mut Image) {
+        draw_ln(self.p1.clone(), self.p2.clone(), image, self.color().clone());
+        draw_ln(self.p2.clone(), self.p3.clone(), image, self.color().clone());
+        draw_ln(self.p3.clone(), self.p1.clone(), image, self.color().clone());
     }
     fn color(&self) -> &Color {
         &self.color

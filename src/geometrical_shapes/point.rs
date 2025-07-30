@@ -37,7 +37,6 @@ use crate::geometrical_shapes::{Drawable, Displayable};
     // Point drawable
     impl Drawable for Point {
         fn draw(&self, image: &mut Image) {
-            // let _ = image.set_pixel(self.x, self.y, self.color.clone());
             Displayable::display(image, self.x, self.y, self.color.clone());
         }
         fn color(&self) -> &Color {
