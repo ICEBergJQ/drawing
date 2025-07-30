@@ -1,6 +1,6 @@
 use rand::Rng;
 use raster::{Color, Image};
-use crate::geometrical_shapes::{Drawable, Point};
+use crate::geometrical_shapes::{Drawable, Point,Displayable};
 
 #[derive(Clone)]
 pub struct Circle {
@@ -38,14 +38,16 @@ impl Circle {
 
 impl Drawable for Circle {
     fn draw(&self, image: &mut Image) {
-        let mut steps: i32 = 360;
-        steps = steps.pow(2);
-        let color = Circle::random_color();
+        let steps: i32 = 180*  self.radius;
+        let color =  Circle::random_color();
         for i in 0..steps {
-            let theta = ((i as f64) * 2.0 * std::f64::consts::PI) / (steps as f64);
+            let theta: f64 = ((i as f64) * std::f64::consts::PI) / (steps as f64);
             let x = (self.center.x as f64) + (self.radius as f64) * theta.cos();
             let y = (self.center.y as f64) + (self.radius as f64) * theta.sin();
-            let _ = image.set_pixel(x.round() as i32, y.round() as i32, color.clone());
+            let minus_y  = (self.center.y as f64) - (self.radius as f64) * theta.sin();
+            Displayable::display(image, x.round() as i32, y.round() as i32, color.clone());
+            Displayable::display(image, x.round() as i32, minus_y.round() as i32, color.clone());
+
         }
     }
     fn color(&self) -> &Color {
